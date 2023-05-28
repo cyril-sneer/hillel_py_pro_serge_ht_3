@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+
+{% block title %} {{ title }} {% endblock %}
+
+
+{% block content %}
+    <p><a href="{{ url_for('show_unique_artists_qty') }}">Показать количество уникальных исполнителей</a>
+
+    <p><a href="{{ url_for('show_tracks_qty') }}">Показать количество треков</a>
+
+    <form action="{{ url_for ('show_genred_tracks_qty') }}">
+        <label for="genre_selector">
+            Количество треков в жанре
+            <select id="genre_selector" name="genre">
+                {% for genre in genres %}
+                    <option value={{ genre }}>{{ genre }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <input type="submit" value="показать">
+    </form>
+
+    <p><a href="{{ url_for('show_tracks_and_duration') }}">Показать список треков и их продолжительность</a>
+
+    <p><a href="{{ url_for('show_aver_and_total_duration') }}">Показать среднюю и общую продолжительности треков</a>
+
+{% endblock %}
+
+

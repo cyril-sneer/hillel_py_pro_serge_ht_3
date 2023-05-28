@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    <table border="1" cellpadding="5">
+        <tr>
+            <td align="center"><b>Title</b></td>
+            <td align="center"><b>Artist</b></td>
+            <td align="center"><b>Genre</b></td>
+            <td align="center"><b>Duration</b></td>
+        </tr>
+        {% for track in tracks_list %}
+            <tr>
+                <td>{{ track['title'] }}</td>
+                <td>{{ track['artist'] }}</td>
+                <td>{{ track[2] }}</td>
+                <td>{{ track['duration'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

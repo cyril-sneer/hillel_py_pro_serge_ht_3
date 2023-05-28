@@ -1,4 +1,7 @@
-import sqlite3, click, csv
+import click
+import csv
+import sqlite3
+
 from flask import current_app, g
 
 
@@ -39,6 +42,7 @@ def fill_db():
         for line in csv_reader:
             if line:
                 title, artist, genre, duration = line
+                genre: str = genre.replace(' ', '_')
 
                 if genre not in genre_list:
                     genre_list.append(genre)
@@ -52,6 +56,7 @@ def fill_db():
                            (title, artist, genre_id, duration))
                 # print(f"{title} : {artist} : {genre_id} : {genre} : {duration} inserted")
     db.commit()
+
 
 @click.command('create-db')
 def create_db_command():
